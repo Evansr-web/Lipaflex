@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101b2d">
+  <meta name="description" content="LipaFlex helps you submit and track bill payment requests in one place.">
+  <title>LipaFlex | Simple Bill Payment Requests</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="LipaFlex home">
+      <span class="brand-mark" aria-hidden="true">L</span>
+      <span>LipaFlex</span>
+    </a>
+    <span class="demo-tag">DEMO</span>
+  </header>
+
+  <main class="shell" id="home">
+
+    <section class="welcome" aria-labelledby="welcome-title">
+      <div>
+        <p class="eyebrow">WELCOME TO LIPAFLEX</p>
+
+        <h1 id="welcome-title">
+          Take care of your bills.<br>
+          <span>We'll help with the rest.</span>
+        </h1>
+
+        <p class="muted">
+          Submit a bill-payment request and track its progress in one place.
+        </p>
+      </div>
+
+      <div class="welcome-icon" aria-hidden="true">↗</div>
+    </section>
+
+    <section class="stats" aria-label="Request summary">
+      <article class="stat">
+        <span>Total requests</span>
+        <strong id="totalCount">0</strong>
+      </article>
+
+      <article class="stat">
+        <span>Pending</span>
+        <strong id="pendingCount">0</strong>
+      </article>
+
+      <article class="stat">
+        <span>Completed</span>
+        <strong id="completedCount">0</strong>
+      </article>
+    </section>
+
+    <div class="content-grid">
+
+      <section class="panel" aria-labelledby="request-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">GET STARTED</p>
+            <h2 id="request-title">Request a bill payment</h2>
+          </div>
+          <span class="step" aria-hidden="true">01</span>
+        </div>
+
+        <form id="requestForm">
+
+          <label for="customerName">Your full name</label>
+          <input
+            id="customerName"
+            name="customerName"
+            type="text"
+            autocomplete="name"
+            placeholder="e.g. Jane Wanjiku"
+            maxlength="100"
+            required
+          >
+
+          <label for="phone">M-Pesa phone number</label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            inputmode="tel"
+            autocomplete="tel"
+            placeholder="07XX XXX XXX"
+            pattern="(0[17][0-9]{8}|254[17][0-9]{8}|[+]254[17][0-9]{8})"
+            title="Enter a valid Kenyan mobile number, for example 0712345678 or 254712345678."
+            required
+          >
+
+          <label for="billType">Bill type</label>
+          <select id="billType" name="billType" required>
+            <option value="">Choose a bill type</option>
+            <option value="KPLC / Electricity">KPLC / Electricity</option>
+            <option value="Water">Water</option>
+            <option value="Internet">Internet</option>
+            <option value="School fees">School fees</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <label for="reference">Account / bill reference</label>
+          <input
+            id="reference"
+            name="reference"
+            type="text"
+            placeholder="Enter your account or bill number"
+            maxlength="100"
+            required
+          >
+
+          <label for="amount">Amount (KSh)</label>
+          <input
+            id="amount"
+            name="amount"
+            type="number"
+            inputmode="decimal"
+            min="1"
+            max="10000000"
+            step="1"
+            placeholder="e.g. 1500"
+            required
+          >
+
+          <label for="notes">Additional notes (optional)</label>
+          <textarea
+            id="notes"
+            name="notes"
+            rows="3"
+            maxlength="500"
+            placeholder="Anything we should know?"
+          ></textarea>
+
+          <button class="primary-btn" type="submit">
+            Submit payment request →
+          </button>
+
+          <p class="fine-print">
+            Demo only. No money is collected and no bill is paid through this page.
+          </p>
+
+        </form>
+      </section>
+
+      <section class="panel" aria-labelledby="activity-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">YOUR ACTIVITY</p>
+            <h2 id="activity-title">Recent requests</h2>
+          </div>
+          <span class="step" aria-hidden="true">02</span>
+        </div>
+
+        <div
+          id="requestsList"
+          class="requests-list"
+          aria-live="polite"
+          aria-relevant="additions text"
+        >
+          <div class="empty-state">
+            <span aria-hidden="true">▤</span>
+            <h3>No requests yet</h3>
+            <p>Your submitted requests will appear here.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <section class="notice" aria-label="Payment safety information">
+      <span class="notice-icon" aria-hidden="true">i</span>
+      <p>
+        <strong>Payment safety:</strong>
+        Never share your M-Pesa PIN or password.
+        A real payment flow will ask you to authorize securely on your own phone.
+      </p>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> LipaFlex. All rights reserved.</p>
+    </footer>
+
+  </main>
+</body>
+          </html>
+  
